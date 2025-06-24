@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.API", "Shopping List\ShoppingList.API.csproj", "{16273F18-1EA4-44B4-B12A-BD7D22782FB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.API", "ShoppingList.API\ShoppingList.API.csproj", "{16273F18-1EA4-44B4-B12A-BD7D22782FB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Core", "Categories.Core\ShoppingList.Core.csproj", "{9BEDB4E9-5FED-471C-A917-655C85E4836A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Core", "ShoppingList.Core\ShoppingList.Core.csproj", "{9BEDB4E9-5FED-471C-A917-655C85E4836A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Data", "Categories.Data\ShoppingList.Data.csproj", "{6E8D82CA-33B4-4EB2-B425-49E1A87834E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Data", "ShoppingList.Data\ShoppingList.Data.csproj", "{6E8D82CA-33B4-4EB2-B425-49E1A87834E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Service", "Categories.Service\ShoppingList.Service.csproj", "{A8227775-0201-4FDD-A9DB-C480B260FCE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Service", "ShoppingList.Service\ShoppingList.Service.csproj", "{A8227775-0201-4FDD-A9DB-C480B260FCE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

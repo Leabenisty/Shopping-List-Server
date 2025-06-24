@@ -16,4 +16,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.0.411" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingList.Core\ShoppingList.Core.csproj" />
+    <ProjectReference Include="..\ShoppingList.Data\ShoppingList.Data.csproj" />
+    <ProjectReference Include="..\ShoppingList.Service\ShoppingList.Service.csproj" />
+  </ItemGroup>
+
 </Project>
