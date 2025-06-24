@@ -8,7 +8,7 @@ namespace ShoppingList.Data
     {
         public DbSet<Category> DataCategory { get; set; }
         public DbSet<Product> DataProduct { get; set; }
-        public DbSet<OrderList> DataWorkShoppingList { get; set; }
+        public DbSet<OrderList> DataOrderList { get; set; }
 
         //seeding to categories
         protected override void OnModelCreating(ModelBuilder modelBuilder)
