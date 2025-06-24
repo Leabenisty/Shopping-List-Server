@@ -1,3 +1,4 @@
+using Shopping_List.Service;
 using ShoppingList.Core.Repositories;
 using ShoppingList.Core.Services;
 using ShoppingList.Data;
@@ -20,12 +21,12 @@ builder.Services.AddCors(opt => opt.AddPolicy("Policy", Policy =>
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-//builder.Services.AddScoped<IProductService, ProductService>();
-//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //builder.Services.AddScoped<IOrderListService, OrderListService>();
 //builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
 
-//builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
