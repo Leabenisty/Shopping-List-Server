@@ -30,14 +30,14 @@ namespace Shopping_List.Controllers
                 return Ok(new
                 {
                     Status = "success",
-                    Message = "לא נמצאו פריטים",
+                    Message = "לא נמצאו מוצרים",
                     Data = new List<Category>()
                 });
             }
             return Ok(new
             {
                 Status = "success",
-                Message = "הפריטים נשלפו בהצלחה",
+                Message = "המוצרים נשלפו בהצלחה",
                 Data = categories
             });
         }

@@ -23,8 +23,8 @@ namespace ShoppingList.Data.Repositories
         {
             try
             {
-                List<Category> addNewRequests = await _context.DataCategory.ToListAsync();
-                return addNewRequests;
+                List<Category> categoryList = await _context.DataCategory.ToListAsync();
+                return categoryList;
 
             }
             catch (SqlException sqlEx)

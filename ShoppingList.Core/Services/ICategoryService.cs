@@ -10,5 +10,6 @@ namespace ShoppingList.Core.Services
     public interface ICategoryService
     {
        Task<List<Category>> GetAllCategoryAsync();
+
     }
 }
