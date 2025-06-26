@@ -8,61 +8,67 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ShoppingList.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddMigrationrestarttabels : Migration
+    public partial class restort : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DataCategory",
+                name: "Category",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataCategory", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DataOrderList",
+                name: "Order",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataOrderList", x => x.Id);
+                    table.PrimaryKey("PK_Order", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DataProduct",
+                name: "OrderProduct",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OrderID = table.Column<int>(type: "int", nullable: false),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    OrderListId = table.Column<int>(type: "int", nullable: true)
+                    CategoryID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DataProduct", x => x.Id);
+                    table.PrimaryKey("PK_OrderProduct", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_DataProduct_DataOrderList_OrderListId",
-                        column: x => x.OrderListId,
-                        principalTable: "DataOrderList",
-                        principalColumn: "Id");
+                        name: "FK_OrderProduct_Category_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Category",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_OrderProduct_Order_OrderID",
+                        column: x => x.OrderID,
+                        principalTable: "Order",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "DataCategory",
-                columns: new[] { "Id", "Name" },
+                table: "Category",
+                columns: new[] { "ID", "Name" },
                 values: new object[,]
                 {
                     { 1, "מוצרי ניקיון" },
@@ -73,22 +79,27 @@ namespace ShoppingList.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DataProduct_OrderListId",
-                table: "DataProduct",
-                column: "OrderListId");
+                name: "IX_OrderProduct_CategoryID",
+                table: "OrderProduct",
+                column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderProduct_OrderID",
+                table: "OrderProduct",
+                column: "OrderID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DataCategory");
+                name: "OrderProduct");
 
             migrationBuilder.DropTable(
-                name: "DataProduct");
+                name: "Category");
 
             migrationBuilder.DropTable(
-                name: "DataOrderList");
+                name: "Order");
         }
     }
 }

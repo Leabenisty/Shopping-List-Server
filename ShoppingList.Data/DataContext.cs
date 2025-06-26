@@ -27,7 +27,9 @@ namespace ShoppingList.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //connection to DB
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ShoppingListDB; Trusted_Connection=True");
+
+            optionsBuilder.UseSqlServer("Server=lea-db.cl4c242yux6i.ap-south-1.rds.amazonaws.com,1433;Database=LeaDb;User Id=admin;Password=sg325956754;TrustServerCertificate=true;Encrypt=true;");
+
             optionsBuilder.LogTo(message => Debug.WriteLine(message));
         }
         //

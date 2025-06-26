@@ -12,8 +12,8 @@ using ShoppingList.Data;
 namespace ShoppingList.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250625173026_rename_Entites")]
-    partial class rename_Entites
+    [Migration("20250626104503_restort")]
+    partial class restort
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -121,13 +121,11 @@ namespace ShoppingList.Data.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CategoryID");
 
-                    b.HasOne("ShoppingList.Core.Models.Order", "Order")
+                    b.HasOne("ShoppingList.Core.Models.Order", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("ShoppingList.Core.Models.Category", b =>
