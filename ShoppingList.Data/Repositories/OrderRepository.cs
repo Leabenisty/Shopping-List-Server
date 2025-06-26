@@ -29,7 +29,6 @@ namespace ShoppingList.Data.Repositories
               .Include(o => o.Products) // טוען גם את המוצרים של כל הזמנה
               .ToListAsync();
                 return orderList;
-
             }
             catch (SqlException sqlEx)
             {

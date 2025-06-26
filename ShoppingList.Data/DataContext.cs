@@ -7,7 +7,6 @@ namespace ShoppingList.Data
     public class DataContext : DbContext
     {
         public DbSet<Category> Category { get; set; }
-        //public DbSet<Product> DataProduct { get; set; }
         public DbSet<Order> Order { get; set; }
 
         //seeding to categories
