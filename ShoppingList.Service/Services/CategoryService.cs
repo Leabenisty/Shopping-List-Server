@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ShoppingList.Core.DTOs;
 using ShoppingList.Core.Models;
 using ShoppingList.Core.Repositories;
 using ShoppingList.Core.Services;
@@ -13,20 +14,19 @@ namespace ShoppingList.Service.Services
     public class CategoryService: ICategoryService
     {
         private readonly ICategoryRepository repository;
-        //private readonly IMapper mapper;
+        private readonly IMapper mapper;
 
-        public CategoryService(/*IMapper mapper,*/ ICategoryRepository repository)
+        public CategoryService(IMapper mapper, ICategoryRepository repository)
         {
-            //this.mapper = mapper; 
+            this.mapper = mapper; 
             this.repository = repository;
         }
   
-        public async Task<List<Category>> GetAllCategoryAsync() 
+        public async Task<List<CategoryDto>> GetAllCategoryAsync() 
         {  
             var categories = await repository.GetAllCategoryAsync();
-            //var categoriesDto = mapper.Map<List<categoriesDto>>(categories);
-            //return categoriesDto;
-            return categories;
+            var categoriesDto = mapper.Map<List<CategoryDto>>(categories);
+            return categoriesDto;
         }
 
      

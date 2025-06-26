@@ -5,20 +5,29 @@ using System.Data.SqlClient;
 
 namespace ShoppingList.Data.Repositories
 {
-    public class OrderListRepository : IOrderListRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly DataContext? _context;
 
-        public OrderListRepository(DataContext context)
+        public OrderRepository(DataContext context)
         {
             _context = context;
         }
 
-        public async Task<List<OrderList>> GetAllOrderListAsync()
+        public async Task<Order> AddOrder(Order order)
+        {
+            await _context.Order.AddAsync(order);
+            await _context.SaveChangesAsync();
+            return order;
+        }
+
+        public async Task<List<Order>> GetAllOrderAsync()
         {
             try
             {
-                List<OrderList> orderList = await _context.DataOrderList.ToListAsync();
+                List<Order> orderList = await _context.Order
+              .Include(o => o.Products) // טוען גם את המוצרים של כל הזמנה
+              .ToListAsync();
                 return orderList;
 
             }

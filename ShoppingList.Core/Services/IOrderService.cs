@@ -1,5 +1,6 @@
 ﻿using ShoppingList.Core.DTOs;
 using ShoppingList.Core.Models;
+using ShoppingList.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Core.Services
 {
-    public interface ICategoryService
+    
+    public interface IOrderService
     {
-       Task<List<CategoryDto>> GetAllCategoryAsync();
-
+        Task<List<OrderDto>> GetAllOrderAsync();
+        Task<OrderDto> AddOrder(List<ProductPostModel> productPosts);
     }
 }

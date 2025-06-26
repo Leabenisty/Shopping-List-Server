@@ -23,7 +23,7 @@ namespace ShoppingList.Data.Repositories
         {
             try
             {
-                List<Category> categoryList = await _context.DataCategory.ToListAsync();
+                List<Category> categoryList = await _context.Category.ToListAsync();
                 return categoryList;
 
             }

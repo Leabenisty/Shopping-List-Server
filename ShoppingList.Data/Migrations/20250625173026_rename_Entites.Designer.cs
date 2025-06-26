@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoppingList.Data;
 
@@ -11,9 +12,11 @@ using ShoppingList.Data;
 namespace ShoppingList.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250625173026_rename_Entites")]
+    partial class rename_Entites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,11 +121,13 @@ namespace ShoppingList.Data.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CategoryID");
 
-                    b.HasOne("ShoppingList.Core.Models.Order", null)
+                    b.HasOne("ShoppingList.Core.Models.Order", "Order")
                         .WithMany("Products")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("ShoppingList.Core.Models.Category", b =>

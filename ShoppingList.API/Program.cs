@@ -21,10 +21,10 @@ builder.Services.AddCors(opt => opt.AddPolicy("Policy", Policy =>
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//builder.Services.AddScoped<IOrderListService, OrderListService>();
-//builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
+//builder.Services.AddScoped<IProductService, ProductService>();
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddDbContext<DataContext>();

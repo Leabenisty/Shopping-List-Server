@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Core.Repositories
 {
-    public interface IOrderListRepository
+    public interface IOrderRepository
     {
-        Task<List<OrderList>> GetAllOrderListAsync();
+        Task<List<Order>> GetAllOrderAsync();
+        Task<Order> AddOrder(Order order);
+
     }
 }

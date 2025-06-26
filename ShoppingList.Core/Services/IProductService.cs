@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Core.Services
 {
-    public interface IProductService
-    {
-        Task<List<Product>> GetAllProductAsync();
-        Task <Product> GetProductById(int id);
-        Task<Product> AddProductAsync(ProductPostModel productPostModel);
-        Task DeleteProductAsync(int productId);
-    }
+    //public interface IProductService
+    //{
+    //    Task<List<Product>> GetAllProductAsync();
+    //    Task <Product> GetProductById(int id);
+    //    Task<Product> AddProductAsync(List<ProductPostModel> productPostModel);
+    //    Task DeleteProductAsync(int productId);
+    //}
 }

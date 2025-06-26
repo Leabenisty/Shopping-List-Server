@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Core.Models
 {
-    public class OrderList
+    public class Order
     {
-        public int Id {  get; set; }
-        public string CustomerName  { get; set; }
+        public int ID{  get; set; }
         public DateTime CreatedAt { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public virtual ICollection<OrderProduct> Products { get; set; }
 
     }
 }

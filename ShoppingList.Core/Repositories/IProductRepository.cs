@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Core.Repositories
 {
-    public interface IProductRepository
-    {
-        Task<List<Product>> GetAllProductAsync();
-        Task<Product> GetProductById(int id);
-        Task<Product> AddProductAsync(Product product);
-        Task DeleteProductAsync(int productId);
+    //public interface IProductRepository
+    //{
+    //    Task<List<ProductDto>> GetAllProductAsync();
+    //    Task<Product> GetProductById(int id);
+    //    Task<Product> AddProductAsync(Product product);
+    //    Task DeleteProductAsync(int productId);
 
-    }
+    //}
 }

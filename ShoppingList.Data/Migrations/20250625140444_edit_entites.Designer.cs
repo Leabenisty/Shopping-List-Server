@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoppingList.Data;
 
@@ -11,9 +12,11 @@ using ShoppingList.Data;
 namespace ShoppingList.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250625140444_edit_entites")]
+    partial class edit_entites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +39,7 @@ namespace ShoppingList.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Category");
+                    b.ToTable("DataCategory");
 
                     b.HasData(
                         new
@@ -79,7 +82,7 @@ namespace ShoppingList.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Order");
+                    b.ToTable("DataOrderList");
                 });
 
             modelBuilder.Entity("ShoppingList.Core.Models.OrderProduct", b =>
@@ -90,39 +93,74 @@ namespace ShoppingList.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int?>("CategoryID")
-                        .HasColumnType("int");
-
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CategoryID");
-
                     b.HasIndex("OrderID");
+
+                    b.HasIndex("ProductID");
 
                     b.ToTable("OrderProduct");
                 });
 
+            modelBuilder.Entity("ShoppingList.Core.Models.Product", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("DataProduct");
+                });
+
             modelBuilder.Entity("ShoppingList.Core.Models.OrderProduct", b =>
                 {
-                    b.HasOne("ShoppingList.Core.Models.Category", null)
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryID");
-
-                    b.HasOne("ShoppingList.Core.Models.Order", null)
+                    b.HasOne("ShoppingList.Core.Models.Order", "Order")
                         .WithMany("Products")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ShoppingList.Core.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ShoppingList.Core.Models.Product", b =>
+                {
+                    b.HasOne("ShoppingList.Core.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("ShoppingList.Core.Models.Category", b =>
