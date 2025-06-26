@@ -15,9 +15,6 @@ namespace ShoppingList.Core.Models
         public int OrderID { get; set; }
         public string ProductName { get; set; }
         public int Quantity { get; set; }
-
-        //[JsonIgnore]
-        //public virtual Order Order { get; set; }
         
     }
 }
